@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php require_once("frontend/template/header-includes.php"); ?>
+    <title>Spinzo Games</title>
+    <style>
+        .welcome-text {
+            color: #22C235;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 150px;
+            background-color: #222;
+            border-radius: 10px;
+            padding: 10px;
+        }
+
+        .banner {
+            background-image: url('<?php echo $site_url ?>public/media/app/dashboard/mask group.png');
+            background-size: cover;
+            background-position: center;
+            height: 150px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .banner-text {
+            position: absolute;
+            bottom: 20px;
+            left: 10px;
+            font-size: 18px;
+            color: #fff;
+            line-height: 23px;
+        }
+        .banner-img {
+            flex: 1.5;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .details-button {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #22C235;
+            color: #000;
+            border: none;
+            padding: 6px 22px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        .details-txt {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .details-txt p {
+            font-size: 14px;
+            margin-right: 10px;
+            padding: 20px 0;
+        }
+        .member-info {
+            background-color: #22C235;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .member-info span {
+            color: #0A090C;
+            font-size: 14px;
+            margin-left: 11px;
+        }
+
+        .member-info svg {
+            width: 20px;
+            height: 20px;
+            fill: #22C235;
+            margin-right: 10px;
+        }
+
+        .member-info .balance {
+            display: flex;
+            align-items: center;
+        }
+        .games-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom:50px;
+        }
+
+        .game-card {
+            background: linear-gradient(180deg, #22C235 25%, #6AFA7B 81%);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            width: 30%;
+            margin-bottom: 15px;
+            transition: background-color 0.3s ease; 
+        }
+
+        .game-card:hover {
+            background: linear-gradient(180deg, #6AFA7B 25%, #22C235 81%); 
+        }
+
+        .game-card img {
+            width: 80px;
+            height: 70px;
+        }
+
+        .game-card span {
+            color: #0A090C;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <?php require_once('frontend/template/header.php') ?>
+        <h1 class="page-title">Welcome To Spinzo Games</h1>
+        <div class="banner">
+            <p class="banner-text">Daily<br> Check-In Bonus<br>Recharge Everyday<br>Claim Bonus</p>
+            <div class="banner-img">
+                <img src="<?php echo $site_url ?>public/media/app/dashboard/vecteezy_black.png" alt="Game Image">
+            </div>
+        </div>
+
+        <div class="details-txt">
+           <p>Please remember the UPI Id of your payment and fill in the correct details...</p>
+           <a class="details-button" href='<?php echo $app_url ?>construction'>Details</a>
+        </div>
+
+        <div class="member-info">
+            <div class="balance">
+                <img src="<?php echo $site_url ?>public/media/app/dashboard/user-stroke-rounded.svg" alt="user-stroke-rounded" width="25" height="25">
+                <p style='color:#000'>Member <?php echo $session_invite_code ?>: ₹<?php echo ($direct_members * 20) + 50 ?>.00</p>
+            </div>
+            <img src="<?php echo $site_url ?>public/media/app/dashboard/arrow-down-01-stroke-rounded.svg" alt="arrow-down" width="25" height="25">
+        </div>
+        <div class="games-flex">
+            
+            <div class="game-card">
+                <a href='<?php echo $app_url ?>lottery' style='display:block;'>
+                    <img src="<?php echo $site_url ?>public/media/app/dashboard/group.png" alt="Lottery"><br>
+                    <p class='black-text'>Lottery</p>
+                </a>
+            </div>
+            <div class="game-card">
+                <a href='<?php echo $app_url ?>construction'>
+                    <img src="<?php echo $site_url ?>public/media/app/dashboard/flying-airoplane.png" alt="Original"><br>
+                    <p class='black-text'>Original</p>
+                </a>
+            </div>
+            <div class="game-card">
+                <a href='<?php echo $app_url ?>construction'>
+                    <img src="<?php echo $site_url ?>public/media/app/dashboard/3d-dice-studio.png" alt="Ludo"><br>
+                    <p class='black-text'>Ludo</p>
+                </a>
+            </div>
+            <div class="game-card">
+                <a href='<?php echo $app_url ?>construction'>
+                    <img src="<?php echo $site_url ?>public/media/app/dashboard/vecteezy_isolated-casino.png" alt="Slots"><br>
+                    <p class='black-text'>Slots</p>
+                </a>
+            </div>
+            <div class="game-card">
+                <a href='<?php echo $app_url ?>construction'>
+                    <img src="<?php echo $site_url ?>public/media/app/dashboard/vecteezy_computer-icons-casino-game.png" alt="Popular"><br>
+                    <p class='black-text'>Popular</p>
+                </a>
+            </div>
+            <div class="game-card">
+                <a href='<?php echo $app_url ?>construction'>
+                    <img src="<?php echo $site_url ?>public/media/app/dashboard/vecteezy_3d-render-object-casino.png" alt="Casino"><br>
+                    <p class='black-text'>Casino</p>
+                </a>
+            </div>
+            <div class="game-card">
+                <a href='<?php echo $app_url ?>construction'>
+                    <img src="<?php echo $site_url ?>public/media/app/dashboard/ai-generative-collection-of-sports.png" alt="Sports"><br>
+                    <p class='black-text'>Sports</p>
+                </a>
+            </div>
+            <div class="game-card">
+                <a href='<?php echo $app_url ?>construction'>
+                    <img src="<?php echo $site_url ?>public/media/app/dashboard/isolated-casino-composition.png" alt="Rummy">
+                    <p class='black-text'>Rummy</p>
+                </a>
+            </div>
+            <div class="game-card">
+                <a href='<?php echo $app_url ?>construction'>
+                    <img src="<?php echo $site_url ?>public/media/app/dashboard/3d-boat-isolated-on-transparent-background.png" alt="Fishing"><br>
+                    <p class='black-text'>Fishing</p>
+                </a>
+            </div>
+        </div>
+        <?php require_once('frontend/template/footer.php') ?>
+    </div>
+</body>
+</html>

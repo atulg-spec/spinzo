@@ -1,0 +1,25 @@
+:root {
+    --animation-duration: 2s;
+    --text-length: 12;
+  }
+  
+  .typing {
+    animation: typing var(--animation-duration) steps(var(--text-length)), blink 5s step-end infinite alternate;
+    border-right: 3px solid;
+    /* font: 40 clamp(2rem, 10vw, 8rem) monospace; */
+    overflow: hidden;
+    white-space: nowrap;
+    width: calc(var(--text-length) * 1ch);
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+  }
+  
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
