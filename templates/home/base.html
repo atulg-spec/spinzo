@@ -46,7 +46,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <div class="absolute inset-x-0 -top-40 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true"
-        style="z-index: -1;">
+        style="">
         <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#32cd32] to-[#006400] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
             style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
         </div>
@@ -110,6 +110,50 @@
             </div>
         </div>
     </nav>
+
+
+    <aside class="w-full p-6 sm:w-60 dark:bg-gray-50 dark:text-gray-800">
+        <nav class="space-y-8 text-sm">
+            <div class="space-y-2">
+                <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-600">Getting Started</h2>
+                <div class="flex flex-col space-y-1">
+                    <a rel="noopener noreferrer" href="#">Installation</a>
+                    <a rel="noopener noreferrer" href="#">Plugins</a>
+                    <a rel="noopener noreferrer" href="#">Migrations</a>
+                    <a rel="noopener noreferrer" href="#">Appearance</a>
+                    <a rel="noopener noreferrer" href="#">Mamba UI</a>
+                </div>
+            </div>
+            <div class="space-y-2">
+                <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-600">Dashboard</h2>
+                <div class="flex flex-col space-y-1">
+                    <a rel="noopener noreferrer" href="#">Header</a>
+                    <a rel="noopener noreferrer" href="#">Drawer</a>
+                    <a rel="noopener noreferrer" href="#">Page Title</a>
+                    <a rel="noopener noreferrer" href="#">Menus</a>
+                    <a rel="noopener noreferrer" href="#">Sidebar</a>
+                    <a rel="noopener noreferrer" href="#">Footer</a>
+                </div>
+            </div>
+            <div class="space-y-2">
+                <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-600">Pages</h2>
+                <div class="flex flex-col space-y-1">
+                    <a rel="noopener noreferrer" href="#">Homepage</a>
+                    <a rel="noopener noreferrer" href="#">Users</a>
+                    <a rel="noopener noreferrer" href="#">Tools</a>
+                    <a rel="noopener noreferrer" href="#">Settings</a>
+                </div>
+            </div>
+            <div class="space-y-2">
+                <h2 class="text-sm font-semibold tracking-widest uppercase dark:text-gray-600">Misc</h2>
+                <div class="flex flex-col space-y-1">
+                    <a rel="noopener noreferrer" href="#">Tutorials</a>
+                    <a rel="noopener noreferrer" href="#">Changelog</a>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
 
     {% block body %}
     {% endblock body %}

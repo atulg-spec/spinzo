@@ -14,7 +14,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 
 def index(request):
-    return render(request, 'home/base.html')
+    return render(request, 'landing/home.html')
 
 def handlelogout(request):
     logout(request)

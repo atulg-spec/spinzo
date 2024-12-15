@@ -3,7 +3,7 @@
 
 {% block body %}
 <section class="bg-black min-h-screen flex items-center justify-center">
-    <div class="relative w-full max-w-md px-6 bg-black rounded-lg shadow-lg">
+    <div class="relative w-full max-w-md px-6 py-4 rounded-lg shadow-lg" style="background-color: rgba(255, 255, 255, 0.13);">
         <!-- Glowmorphism effect -->
         <div class="absolute inset-0 bg-gradient-to-r blur-xl rounded-lg opacity-50"></div>
 
@@ -21,13 +21,13 @@
                     <label for="phone_number" class="block mb-2 text-sm font-medium text-green-400">Your Phone
                         Number</label>
                     <input type="tel" name="phone_number" id="phone_number"
-                        class="w-full p-2.5 text-white bg-black border border-gray-700 rounded-lg focus:ring focus:ring-green-500"
+                        class="w-full p-2 text-white bg-black border border-gray-700 rounded-lg focus:ring focus:ring-green-500"
                         placeholder="99999999" required>
                 </div>
                 <div>
                     <label for="password" class="block mb-2 text-sm font-medium text-green-400">Password</label>
                     <input type="password" name="password" id="password"
-                        class="w-full p-2.5 text-white bg-black border border-gray-700 rounded-lg focus:ring focus:ring-green-500"
+                        class="w-full p-2 text-white bg-black border border-gray-700 rounded-lg focus:ring focus:ring-green-500"
                         placeholder="••••••••" required>
                 </div>
                 <button type="submit"

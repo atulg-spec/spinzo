@@ -86,9 +86,8 @@
 <form action="/payment_status" method="POST">
     <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="{{key}}" data-amount="{{ payment.amount }}"
         data-currency="{{ payment.currency }}" data-order_id="{{ payment.id }}" data-buttontext="Continue"
-        data-name="Spinzo.in" data-description="Spinzo Description"
-        data-image="{{settings.icon.url}}" data-prefill.name="Your Name"
-        data-prefill.email="your@email.com" data-prefill.contact="Your Contact Number">
+        data-name="Spinzo.in" data-description="Spinzo Description" data-image="{{settings.icon.url}}"
+        data-prefill.name="Your Name" data-prefill.email="your@email.com" data-prefill.contact="Your Contact Number">
         </script>
 </form>
 
