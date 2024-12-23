@@ -12,6 +12,7 @@ import csv
 from app.models import GatewaySettings, PaymentSettings
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
+from django.utils.dateparse import parse_datetime
 import string
 import random
 import hashlib
@@ -24,6 +25,39 @@ from django.views.decorators.csrf import csrf_exempt
 @login_required
 def index(request):
     return render(request, 'home/home.html')
+
+@login_required
+def transactions(request):
+    user = request.user  # Get the current logged-in user
+    transaction_type = request.GET.get('type')  # Get the transaction type from the query parameter
+    start_date = request.GET.get('start_date')  # Get the start date from query parameters
+    end_date = request.GET.get('end_date')  # Get the end date from query parameters
+    
+    # Base query for filtering transactions by user
+    transactions = Transaction.objects.filter(user=user)
+    
+    # Filter by transaction type if provided
+    if transaction_type in ['deposit', 'withdraw']:
+        transactions = transactions.filter(transaction_type=transaction_type)
+    
+    # Filter by date range if provided
+    if start_date:
+        try:
+            start_date = parse_datetime(start_date)
+            transactions = transactions.filter(created_at__gte=start_date)
+        except ValueError:
+            pass  # Ignore invalid date
+    if end_date:
+        try:
+            end_date = parse_datetime(end_date)
+            transactions = transactions.filter(created_at__lte=end_date)
+        except ValueError:
+            pass  # Ignore invalid date
+    
+    context = {
+        'transactions': transactions,
+    }
+    return render(request, 'home/transaction.html', context)
 
 @login_required
 def my_account(request):

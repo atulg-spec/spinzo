@@ -1,0 +1,76 @@
+{% extends 'home/base.html' %}
+{% load widget_tweaks %}
+
+{% block body %}
+<div class="px-4 md:px-8 lg:px-16 mt-6 md:mt-24">
+    <!-- Filter Form -->
+    <form method="get" class="flex flex-wrap gap-4 mb-8">
+        <select name="type" class="bg-gray-900 text-white p-2 rounded-lg flex-1 min-w-[140px]">
+            <option value="" {% if not request.GET.type %}selected{% endif %}>All</option>
+            <option value="deposit" {% if request.GET.type == 'deposit' %}selected{% endif %}>Deposit</option>
+            <option value="withdraw" {% if request.GET.type == 'withdraw' %}selected{% endif %}>Withdraw</option>
+        </select>
+        <input 
+            type="datetime-local" 
+            name="start_date" 
+            value="{{ request.GET.start_date }}" 
+            class="bg-gray-900 text-white p-2 rounded-lg flex-1 min-w-[140px]"
+            placeholder="Start Date">
+        <input 
+            type="datetime-local" 
+            name="end_date" 
+            value="{{ request.GET.end_date }}" 
+            class="bg-gray-900 text-white p-2 rounded-lg flex-1 min-w-[140px]"
+            placeholder="End Date">
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-lg min-w-[140px]">Filter</button>
+    </form>
+
+    <!-- Transactions List -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {% for transaction in transactions %}
+        <div class="bg-gray-900 text-white p-4 rounded-lg shadow-lg">
+            <div class="flex justify-between items-center mb-4">
+                <!-- Transaction Type Color -->
+                <span class="text-white text-xs font-semibold px-3 py-1 rounded-full 
+                    {% if transaction.transaction_type == 'withdraw' %} bg-red-500 
+                    {% elif transaction.transaction_type == 'deposit' %} bg-green-500 
+                    {% else %} bg-gray-500 {% endif %}">
+                    {{ transaction.get_transaction_type_display }}
+                </span>
+                
+                <!-- Status Color -->
+                <span class="text-white text-xs font-semibold px-3 py-1 rounded-full 
+                    {% if transaction.status == 'failed' %} bg-red-500 
+                    {% elif transaction.status == 'pending' %} bg-yellow-500 
+                    {% elif transaction.status == 'success' %} bg-green-500 
+                    {% else %} bg-gray-500 {% endif %}">
+                    {{ transaction.status|title }}
+                </span>
+            </div>
+            <div class="space-y-2">
+                <div class="flex justify-between">
+                    <span class="text-gray-400 text-sm">Amount</span>
+                    <span class="font-semibold text-sm text-yellow-300">₹{{ transaction.amount }}</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400 text-sm">Type</span>
+                    <span class="font-semibold text-xs">
+                        {{ transaction.transaction_type|upper }}
+                    </span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-400 text-sm">Time</span>
+                    <span class="font-semibold text-xs">{{ transaction.created_at }}</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400 text-sm">Transaction Id</span>
+                    <div class="flex items-center">
+                        <span class="font-semibold text-xs">{{ transaction.transaction_id }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}

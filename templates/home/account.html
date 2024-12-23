@@ -2,8 +2,6 @@
 {% load widget_tweaks %}
 
 {% block body %}
-<br><br><br><br>
-
 <div class="grid lg:grid-cols-9 gap-4" style="z-index: 1000;">
     <div id="addFundsPopup" class="fixed z-50 rounded-lg inset-0 flex items-center justify-center hidden"
         style="left: 50%;top: 50%;transform: translate(-50%, -50%);min-width: 350px; max-width: 500px; min-height: 700px;">
@@ -36,37 +34,53 @@
         </div>
     </div>
 </div>
+<div
+    class="bg-gradient-to-br from-[#22c235] via-[#5aee6c] to-[#43d963] transition-all duration-700 ease-in-out rounded-b-3xl shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] h-48">
+    <div class="flex items-center space-x-4 py-5 px-4">
+        <!-- Image on the left in a circle -->
+        <div class="w-16 h-16 rounded-full overflow-hidden">
+            <img src="https://bdgcolor.com/assets/png/2-58c8a9bc.png" alt="User Image"
+                class="w-full h-full object-cover">
+        </div>
 
-<div class="bg-slate-950 rounded-2xl p-6 text-center text-white shadow-lg relative overflow-hidden w-full">
-    <!-- Background Circles -->
-    <div class="absolute inset-0">
-        <div class="absolute top-0 left-0 bg-gray-500 rounded-full h-40 w-40 opacity-20"></div>
-        <div class="absolute bottom-0 right-0 bg-gray-500 rounded-full h-32 w-32 opacity-20"></div>
+        <!-- Text on the right -->
+        <div>
+            <p class="text-lg text-black font-semibold">{{ request.user.phone_number }}</p>
+            <p class="text-xs text-gray-800">Last login: {{request.user.last_login}}</p>
+        </div>
     </div>
 
-    <!-- Content -->
-    <div class="relative">
-        <p class="text-2xl font-bold sm:text-3xl md:text-4xl">₹ {{wallet_balance}}</p>
-        <div class="flex items-center justify-center mt-2">
-            <i class="material-icons text-gray-400 mr-2">account_balance_wallet</i>
-            <p class="text-lg font-medium sm:text-xl md:text-2xl">Wallet Balance</p>
+    <div class="bg-slate-950 rounded-2xl p-6 text-center text-white shadow-lg relative overflow-hidden mx-2">
+        <!-- Background Circles -->
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-0 bg-gray-500 rounded-full h-40 w-40 opacity-20"></div>
+            <div class="absolute bottom-0 right-0 bg-gray-500 rounded-full h-32 w-32 opacity-20"></div>
         </div>
-        <!-- Buttons -->
-        <div class="flex flex-col sm:flex-row sm:space-x-4 mt-4 md:w-56 mx-auto">
-            <button
-                class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium shadow-md sm:py-2 md:py-2"
-                onclick="document.getElementById('addFundsPopup').classList.remove('hidden');">
-                Deposit
-            </button>
-            <button
-                class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-medium shadow-md mt-2 sm:mt-0 sm:py-2 md:py-2">
-                Withdrawl
-            </button>
+
+        <!-- Content -->
+        <div class="relative">
+            <p class="text-2xl font-bold sm:text-3xl md:text-4xl">₹ {{wallet_balance}}</p>
+            <div class="flex items-center justify-center mt-2">
+                <i data-feather="credit-card" class="w-6 h-6 mr-2"></i>
+                <p class="text-lg font-medium sm:text-xl md:text-2xl">Wallet Balance</p>
+            </div>
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row sm:space-x-4 mt-4 md:w-56 mx-auto">
+                <button
+                    class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium shadow-md sm:py-2 md:py-2"
+                    onclick="document.getElementById('addFundsPopup').classList.remove('hidden');">
+                    Deposit
+                </button>
+                <button
+                    class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-medium shadow-md mt-2 sm:mt-0 sm:py-2 md:py-2">
+                    Withdrawl
+                </button>
+            </div>
         </div>
     </div>
 </div>
 
-<div class="relative flex flex-col my-4 mx-2 shadow-sm border rounded-lg p-2">
+<div class="relative mt-44 flex flex-col my-4 mx-2 shadow-sm border rounded-lg p-2">
     <div class="px-2">
         <div class="flex items-center justify-between w-full text-white text-xs">
             <div class="flex">
@@ -81,6 +95,71 @@
         </div>
     </div>
 </div>
+
+<div class="flex flex-wrap justify-center gap-4 py-5 px-2">
+    <div class="w-full sm:w-1/2 md:w-auto">
+        <a href="/history" class="block">
+            <div class="flex items-center py-4 px-5 rounded-2xl bg-zinc-900">
+                <div>
+                    <i data-feather="clipboard" class="feather-icon mr-2 text-teal-800 h-12"></i>
+                </div>
+                <div>
+                    <p class="text-gray-200 text-xs">Game History</p>
+                    <p class="text-xs text-gray-400">Your game history.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="w-full sm:w-1/2 md:w-auto">
+        <a href="/transactions" class="block">
+            <div class="flex items-center py-4 px-5 rounded-2xl bg-zinc-900">
+                <div>
+                    <i data-feather="clipboard" class="feather-icon mr-2 text-teal-200 h-12"></i>
+                </div>
+                <div>
+                    <p class="text-gray-200 text-xs">Transactions</p>
+                    <p class="text-xs text-gray-400">Your transaction history.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="w-full sm:w-1/2 md:w-auto">
+        <a href="/transactions?type=deposit" class="block">
+            <div class="flex items-center py-4 px-5 rounded-2xl bg-zinc-900">
+                <div>
+                    <i data-feather="dollar-sign" class="feather-icon mr-2 text-teal-500 h-12"></i>
+                </div>
+                <div>
+                    <p class="text-gray-200 text-xs">Deposit</p>
+                    <p class="text-xs text-gray-400">Your deposits history.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="w-full sm:w-1/2 md:w-auto">
+        <a href="/transactions?type=withdraw" class="block">
+            <div class="flex items-center py-4 px-5 rounded-2xl bg-zinc-900">
+                <div>
+                    <i data-feather="arrow-down-circle" class="feather-icon mr-2 text-teal-700 h-12"></i>
+                </div>
+                <div>
+                    <p class="text-gray-200 text-xs">Withdraw</p>
+                    <p class="text-xs text-gray-400">Your withdraw history.</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="px-4">
+    <a href="/logout/" class="flex items-center py-2 text-center text-transparent bg-clip-text bg-gradient-to-br from-[#22c235] via-[#5aee6c] to-[#b3f5cc] drop-shadow-2xl rounded-full hover:bg-green-500 hover:text-white group border border-green-500 mb-2">
+        <span class="text-center w-full">
+            Logout
+        </span>
+    </a>
+</div>
+
+
+
 
 {% if payment %}
 <form action="/payment_status" method="POST">
@@ -122,138 +201,7 @@
 </script>
 {% endif %}
 <script>
-    function submitForm(mode) {
-        const form = document.getElementById('paymentForm');
-        form.submit();
-    }
-</script>
-
-
-{% endblock body %}
-{% extends 'home/base.html' %}
-{% load widget_tweaks %}
-
-{% block body %}
-<br><br><br><br>
-
-<div class="grid lg:grid-cols-9 gap-4" style="z-index: 1000;">
-    <div id="addFundsPopup" class="fixed z-50 rounded-lg inset-0 flex items-center justify-center hidden"
-        style="left: 50%;top: 50%;transform: translate(-50%, -50%);min-width: 350px; max-width: 500px; min-height: 700px;">
-        <div class="bg-slate-950 rounded-lg shadow-lg w-full p-6 border border-zinc-950">
-            <form id="paymentForm" action="/add-funds" method="post">
-                {% csrf_token %}
-                <div class="flex justify-between items-center border-b">
-                    <div>
-                        <label class="text-lg text-white font-semibold mb-2">Add Funds</label><span id=""></span>
-                    </div>
-                    <button class="text-gray-400 hover:text-gray-600" type="button"
-                        onclick="document.getElementById('addFundsPopup').classList.add('hidden')">&times;</button>
-                </div>
-                <div class="text-white my-4">
-                    <div class="mb-3 mt-2">
-                        <label for="amount" class="inline-block mb-1 text-white">Enter Amount
-                        </label>
-                        <input type="number" id="amount"
-                            class="border border-gray-600 text-white bg-gray-900 rounded focus:ring-gray-600 focus:border-gray-600 block w-full p-2 px-3 disabled:opacity-50 disabled:pointer-events-none"
-                            name="amount" placeholder="0.0" value="1000" required="" />
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 gap-2 mt-2">
-                    <div class="flex flex-col">
-                        <button class="bg-green-500 text-white px-4 py-2 rounded" type="button"
-                            onclick="submitForm('payu')">Proceed to Pay</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<div class="bg-slate-950 rounded-2xl p-6 text-center text-white shadow-lg relative overflow-hidden w-full">
-    <!-- Background Circles -->
-    <div class="absolute inset-0">
-        <div class="absolute top-0 left-0 bg-gray-500 rounded-full h-40 w-40 opacity-20"></div>
-        <div class="absolute bottom-0 right-0 bg-gray-500 rounded-full h-32 w-32 opacity-20"></div>
-    </div>
-
-    <!-- Content -->
-    <div class="relative">
-        <p class="text-2xl font-bold sm:text-3xl md:text-4xl">₹ {{wallet_balance}}</p>
-        <div class="flex items-center justify-center mt-2">
-            <i class="material-icons text-gray-400 mr-2">account_balance_wallet</i>
-            <p class="text-lg font-medium sm:text-xl md:text-2xl">Wallet Balance</p>
-        </div>
-        <!-- Buttons -->
-        <div class="flex flex-col sm:flex-row sm:space-x-4 mt-4 md:w-56 mx-auto">
-            <button
-                class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium shadow-md sm:py-2 md:py-2"
-                onclick="document.getElementById('addFundsPopup').classList.remove('hidden');">
-                Deposit
-            </button>
-            <button
-                class="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-lg font-medium shadow-md mt-2 sm:mt-0 sm:py-2 md:py-2">
-                Withdrawl
-            </button>
-        </div>
-    </div>
-</div>
-
-<div class="relative flex flex-col my-4 mx-2 shadow-sm border rounded-lg p-2">
-    <div class="px-2">
-        <div class="flex items-center justify-between w-full text-white text-xs">
-            <div class="flex">
-                Please fill the correct Bank, card, and UPI information. The platform will process Withdral.
-            </div>
-            <div>
-                <button
-                    class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg font-medium shadow-md sm:flex-1 sm:py-2 md:py-2">
-                    Details
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-{% if payment %}
-<form action="/payment_status" method="POST">
-    <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="{{key}}" data-amount="{{ payment.amount }}"
-        data-currency="{{ payment.currency }}" data-order_id="{{ payment.id }}" data-buttontext="Continue"
-        data-name="Spinzo.in" data-description="Spinzo Description" data-image="{{settings.icon.url}}"
-        data-prefill.name="Your Name" data-prefill.email="your@email.com" data-prefill.contact="Your Contact Number">
-        </script>
-</form>
-
-<button id="rzp-button1" class="hidden">Continue</button>
-
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script>
-    var options = {
-        "key": "{{key}}", // Enter the Key ID generated from the Dashboard
-        "amount": "{{payment.amount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-        "currency": "{{payment.currency}}",
-        "name": "Spinzo ",
-        "description": "Spinzo Description",
-        "image": "https://example.com/your_logo",
-        "order_id": "{{payment.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-        "handler": function (response) {
-            window.location.href = `/razorpay-check-status/?payment_id=${response.razorpay_payment_id}&order_id=${response.razorpay_order_id}&signature=${response.razorpay_signature}`
-        },
-        "theme": {
-            "color": "#22c55e"
-        }
-    };
-    var rzp1 = new Razorpay(options);
-    rzp1.on('payment.failed', function (response) {
-        alert('Payment Failed !');
-    });
-    document.getElementById('rzp-button1').onclick = function (e) {
-        rzp1.open();
-        e.preventDefault();
-    }
-    document.getElementById('rzp-button1').click();
-</script>
-{% endif %}
-<script>
+    document.getElementById('topNavBar').classList.add('hidden');
     function submitForm(mode) {
         const form = document.getElementById('paymentForm');
         form.submit();

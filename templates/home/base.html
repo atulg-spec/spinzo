@@ -34,131 +34,32 @@
 
 <body class="bg-black text-white">
     <!-- Navbar -->
-    <nav class="fixed w-full top-0 left-0 z-20 backdrop-blur-lg bg-black bg-opacity-60">
+    <nav class="md:fixed mb-4 w-full top-0 left-0 z-20 backdrop-blur-lg bg-black bg-opacity-60" id="topNavBar">
         <div class="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/">
+            <a href="/home">
                 <img class="w-18 h-14" src="{{settings.icon.url}}" alt="{{settings.siteName}}">
             </a>
             <div class="md:hidden">
-                <i data-feather="menu" class="feather-icon text-white"
-                    onclick="document.getElementById('navBar').classList.toggle('hidden')"></i>
+                <a href="/contactus"
+                    class="text-lg transition duration-200 sm:w-fit w-full px-3.5 py-2 bg-gradient-to-br from-[#22c235] via-[#5aee6c] to-[#b3f5cc] hover:from-[#5aee6c] hover:via-[#b3f5cc] hover:to-[#22c235] transition-all duration-700 ease-in-out rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] justify-center items-center flex hover:shadow-lg hover:scale-105">
+                    <i data-feather="headphones" class="feather-icon mr-1 text-black"></i>
+                    <span class="text-gray-900 text-sm font-medium leading-6 whitespace-nowrap neon-text">Contact
+                        Us</span>
+                </a>
             </div>
             <div class="hidden md:flex space-x-6">
-                <a href="/" class="text-lg text-green-500 transition duration-200">Home</a>
+                <a href="/home" class="text-lg text-green-500 transition duration-200">Home</a>
                 <a href="/aboutus/" class="text-lg text-green-500 transition duration-200">About</a>
                 <a href="/services/" class="text-lg text-green-500 transition duration-200">Services</a>
-                <a href="/contactus/" class="text-lg text-green-500 transition duration-200">Contact</a>
-                <a href="/login/" class="text-lg text-white transition duration-200">Login</a>
-                <a href="/register"
+                <a href="/contactus"
                     class="text-lg transition duration-200 sm:w-fit w-full px-3.5 py-2 bg-gradient-to-br from-[#22c235] via-[#5aee6c] to-[#b3f5cc] hover:from-[#5aee6c] hover:via-[#b3f5cc] hover:to-[#22c235] transition-all duration-700 ease-in-out rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] justify-center items-center flex hover:shadow-lg hover:scale-105">
-                    <span class="px-1.5 text-gray-900 text-sm font-medium leading-6 whitespace-nowrap neon-text">
-                        Register
-                    </span>
+                    <i data-feather="headphones" class="feather-icon mr-1 text-black"></i>
+                    <span class="text-gray-900 text-sm font-medium leading-6 whitespace-nowrap neon-text">Contact
+                        Us</span>
                 </a>
             </div>
         </div>
     </nav>
-
-    <aside id="navBar" class="fixed top-0 left-0 z-40 mt-18 w-64 h-screen transition-transform hidden md:hidden"
-        aria-label="Sidebar">
-        <div class="h-full px-3 py-4 overflow-y-auto bg-gray-950">
-            <ul class="space-y-2 font-medium">
-                <!-- Home -->
-                <li>
-                    <a href="/" class="flex items-center p-2 text-white rounded-lg hover:bg-purple-500 group">
-                        <i data-feather="home" class="feather-icon text-blue-500"></i> <!-- Add color here -->
-                        <span class="ms-3">Home</span>
-                    </a>
-                </li>
-                <!-- Tournaments -->
-                <li>
-                    <a href="/games" class="flex items-center p-2 text-white rounded-lg hover:bg-purple-500 group">
-                        <i data-feather="box" class="feather-icon text-red-500"></i> <!-- Add color here -->
-                        <span class="ms-3">Explore Games</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/tournaments"
-                        class="flex items-center p-2 text-white rounded-lg hover:bg-purple-500 group">
-                        <i data-feather="codesandbox" class="feather-icon text-green-500"></i> <!-- Add color here -->
-                        <span class="ms-3">Tournaments</span>
-                    </a>
-                </li>
-                <!-- Performance -->
-                <li>
-                    <a href="/achievements"
-                        class="flex items-center p-2 text-white rounded-lg hover:bg-purple-500 group">
-                        <i data-feather="award" class="feather-icon text-yellow-500"></i> <!-- Add color here -->
-                        <span class="ms-3">Achievements</span>
-                    </a>
-                </li>
-                <!-- About Us -->
-                <li>
-                    <a href="/aboutus" class="flex items-center p-2 text-white rounded-lg hover:bg-purple-500 group">
-                        <i data-feather="info" class="feather-icon text-pink-500"></i> <!-- Add color here -->
-                        <span class="ms-3">About Us</span>
-                    </a>
-                </li>
-                <!-- Partners -->
-                <li>
-                    <a href="/aboutus" class="flex items-center p-2 text-white rounded-lg hover:bg-purple-500 group">
-                        <i data-feather="users" class="feather-icon text-indigo-500"></i> <!-- Add color here -->
-                        <span class="ms-3">Partners</span>
-                    </a>
-                </li>
-                <!-- Contact Us -->
-                <li>
-                    <a href="/contactus" class="flex items-center p-2 text-white rounded-lg hover:bg-purple-500 group">
-                        <i data-feather="phone" class="feather-icon text-red-500"></i> <!-- Add color here -->
-                        <span class="ms-3">Contact Us</span>
-                    </a>
-                </li>
-                <!-- Privacy Policy -->
-                <li>
-                    <a href="/privacypolicy"
-                        class="flex items-center p-2 text-white rounded-lg hover:bg-purple-500 group">
-                        <i data-feather="shield" class="feather-icon text-teal-500"></i> <!-- Add color here -->
-                        <span class="ms-3">Privacy Policy</span>
-                    </a>
-                </li>
-                <!-- Terms of Service -->
-                <li>
-                    <a href="/termsofservice"
-                        class="flex items-center p-2 text-white rounded-lg hover:bg-purple-500 group">
-                        <i data-feather="file-text" class="feather-icon text-orange-500"></i> <!-- Add color here -->
-                        <span class="ms-3">Terms of Service</span>
-                    </a>
-                </li>
-                <!-- Instagram -->
-                <li>
-                    <a href="#" class="flex items-center p-2 text-white rounded-lg hover:bg-pink-500 group">
-                        <i data-feather="instagram" class="feather-icon text-pink-600"></i> <!-- Add color here -->
-                        <span class="ms-3">Instagram</span>
-                    </a>
-                </li>
-                <!-- Discord -->
-                <li>
-                    <a href="#" class="flex items-center p-2 text-white rounded-lg hover:bg-indigo-700 group">
-                        <svg viewBox="0 -28.5 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" fill="#000000">
-                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                            <g id="SVGRepo_iconCarrier">
-                                <g>
-                                    <path
-                                        d="M216.856339,16.5966031 C200.285002,8.84328665 182.566144,3.2084988 164.041564,0 C161.766523,4.11318106 159.108624,9.64549908 157.276099,14.0464379 C137.583995,11.0849896 118.072967,11.0849896 98.7430163,14.0464379 C96.9108417,9.64549908 94.1925838,4.11318106 91.8971895,0 C73.3526068,3.2084988 55.6133949,8.86399117 39.0420583,16.6376612 C5.61752293,67.146514 -3.4433191,116.400813 1.08711069,164.955721 C23.2560196,181.510915 44.7403634,191.567697 65.8621325,198.148576 C71.0772151,190.971126 75.7283628,183.341335 79.7352139,175.300261 C72.104019,172.400575 64.7949724,168.822202 57.8887866,164.667963 C59.7209612,163.310589 61.5131304,161.891452 63.2445898,160.431257 C105.36741,180.133187 151.134928,180.133187 192.754523,160.431257 C194.506336,161.891452 196.298154,163.310589 198.110326,164.667963 C191.183787,168.842556 183.854737,172.420929 176.223542,175.320965 C180.230393,183.341335 184.861538,190.991831 190.096624,198.16893 C211.238746,191.588051 232.743023,181.531619 254.911949,164.955721 C260.227747,108.668201 245.831087,59.8662432 216.856339,16.5966031 Z M85.4738752,135.09489 C72.8290281,135.09489 62.4592217,123.290155 62.4592217,108.914901 C62.4592217,94.5396472 72.607595,82.7145587 85.4738752,82.7145587 C98.3405064,82.7145587 108.709962,94.5189427 108.488529,108.914901 C108.508531,123.290155 98.3405064,135.09489 85.4738752,135.09489 Z M170.525237,135.09489 C157.88039,135.09489 147.510584,123.290155 147.510584,108.914901 C147.510584,94.5396472 157.658606,82.7145587 170.525237,82.7145587 C183.391518,82.7145587 193.761324,94.5189427 193.539891,108.914901 C193.539891,123.290155 183.391518,135.09489 170.525237,135.09489 Z"
-                                        fill="#5865F2" fill-rule="nonzero"> </path>
-                                </g>
-                            </g>
-                        </svg>
-                        <span class="ms-3">Discord</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </aside>
-
-
     {% block body %}
     {% endblock body %}
 
@@ -191,94 +92,37 @@
     </div>
     {% endif %}
 
-
-
-    <footer class="bg-black text-white py-10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col sm:flex-row justify-between items-center">
-                <!-- Brand Section -->
-                <div class="text-center sm:text-left">
-                    <h1
-                        class="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-[#22c235] via-[#5aee6c] to-[#b3f5cc] drop-shadow-2xl">
-                        SPINZO GAMES</h1>
-                    <p class="mt-2 text-sm text-gray-400">The Ultimate Gaming Experience</p>
-                </div>
-
-                <!-- Social Media Links -->
-                <div class="flex mt-6 sm:mt-0 space-x-6 justify-center sm:justify-end">
-                    <a href="#" class="text-purple-400 hover:text-blue-500 transition duration-300">
-                        <i class="fab fa-facebook-f text-2xl"></i>
-                    </a>
-                    <a href="#" class="text-purple-400 hover:text-blue-500 transition duration-300">
-                        <i class="fab fa-twitter text-2xl"></i>
-                    </a>
-                    <a href="#" class="text-purple-400 hover:text-blue-500 transition duration-300">
-                        <i class="fab fa-twitch text-2xl"></i>
-                    </a>
-                    <a href="#" class="text-purple-400 hover:text-blue-500 transition duration-300">
-                        <i class="fab fa-youtube text-2xl"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Footer Links -->
-            <div class="mt-10 text-center sm:text-left">
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 text-sm text-gray-400">
-                    <div>
-                        <h3 class="text-white font-semibold mb-2">Quick Links</h3>
-                        <ul>
-                            <li><a href="/" class="hover:text-purple-400 transition duration-300">Home</a></li>
-                            <li><a href="/partners" class="hover:text-purple-400 transition duration-300">Our
-                                    Partners</a></li>
-                            <li><a href="/aboutus" class="hover:text-purple-400 transition duration-300">About Us</a>
-                            </li>
-                            <li><a href="/contactus" class="hover:text-purple-400 transition duration-300">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-white font-semibold mb-2">Support</h3>
-                        <ul>
-                            <li><a href="/aboutus" class="hover:text-purple-400 transition duration-300">FAQs</a></li>
-                            <li><a href="/rules" class="hover:text-purple-400 transition duration-300">Rules</a></li>
-                            <li><a href="/register" class="hover:text-purple-400 transition duration-300">Join Us</a>
-                            </li>
-                            <li><a href="/contactus" class="hover:text-purple-400 transition duration-300">Help
-                                    Center</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-white font-semibold mb-2">Legal</h3>
-                        <ul>
-                            <li><a href="/privacypolicy" class="hover:text-purple-400 transition duration-300">Privacy
-                                    Policy</a>
-                            </li>
-                            <li><a href="/termsofservice" class="hover:text-purple-400 transition duration-300">Terms of
-                                    Service</a>
-                            </li>
-                            <li><a href="/refundpolicy" class="hover:text-purple-400 transition duration-300">Refund
-                                    Policy</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-white font-semibold mb-2">Follow Us</h3>
-                        <ul>
-                            <li><a href="" class="hover:text-purple-400 transition duration-300">Instagram</a></li>
-                            <li><a href="" class="hover:text-purple-400 transition duration-300">Facebook</a></li>
-                            <li><a href="" class="hover:text-purple-400 transition duration-300">Twitter</a></li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Copyright Section -->
-            <div class="mt-10 text-center text-sm text-gray-500">
-                <p>&copy; 2024 SPINZO GAMES. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+    
+    <div class="fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-br from-[#22c235] via-[#5aee6c] to-[#43d963] transition-all duration-700 ease-in-out rounded-t-3xl shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] justify-center items-center flex md:hidden">
+        <nav class="flex justify-between w-full max-w-sm px-4 py-3">
+            <!-- Home -->
+            <a href="/home" class="flex flex-col items-center text-black">
+                <i data-feather="home" class="w-6 h-6"></i>
+                <span class="text-xs mt-1">Home</span>
+            </a>
+            <!-- Activity -->
+            <a href="/activity" class="flex flex-col items-center text-black">
+                <i data-feather="clock" class="w-6 h-6"></i>
+                <span class="text-xs mt-1">Activity</span>
+            </a>
+            <!-- Promotion -->
+            <a href="/promotion" class="flex flex-col items-center text-black">
+                <i data-feather="gift" class="w-6 h-6"></i>
+                <span class="text-xs mt-1">Promotion</span>
+            </a>
+            <!-- Wallet -->
+            <a href="/wallet" class="flex flex-col items-center text-black">
+                <i data-feather="credit-card" class="w-6 h-6"></i>
+                <span class="text-xs mt-1">Wallet</span>
+            </a>
+            <!-- Account -->
+            <a href="/my-account" class="flex flex-col items-center text-black">
+                <i data-feather="user" class="w-6 h-6"></i>
+                <span class="text-xs mt-1">Account</span>
+            </a>
+        </nav>
+    </div>
+    <div class="mb-24"></div>
     <input type="hidden" name="csrfmiddlewaretoken"
         value="hgU5WM4dC1EOjLkmgy8uZpDAnXpQWZACMtUPeyGFNzsJL96dLnMBNHu16Nnory0r">
     <script>
