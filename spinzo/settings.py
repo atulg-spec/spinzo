@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-ngnbp($mob(2r&*c8w12_c+2lg+_--e^xw1n)ue_p)v)5gakq=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
