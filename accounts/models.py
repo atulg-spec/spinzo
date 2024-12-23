@@ -35,7 +35,10 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     user_invited_by = models.ForeignKey('self', on_delete=models.SET_NULL, blank=True, null=True, related_name='invited_users')
     gaming_wallet = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     main_account_wallet = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    team_members = models.ManyToManyField('self', blank=True, related_name='team_of')
+    team_members = models.ManyToManyField(
+        'self', through='TeamMembership', symmetrical=False, blank=True
+    )
+
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
@@ -45,5 +48,13 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     objects = CustomUserManager()
 
+    class Meta:
+        verbose_name = "User"
+        verbose_name_plural = "Users"
+
     def __str__(self):
         return self.phone_number
+
+class TeamMembership(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='team_memberships')
+    team_member = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='teamed_by')

@@ -1,0 +1,105 @@
+{% extends 'landing/base.html' %}
+{% load widget_tweaks %}
+
+{% block body %}
+<section class="bg-black min-h-screen flex items-center justify-center">
+    <div class="relative w-full max-w-md px-6 py-4 rounded-lg shadow-lg"
+        style="background-color: rgba(255, 255, 255, 0.13);">
+        <!-- Glowmorphism effect -->
+        <div class="absolute inset-0 bg-gradient-to-r blur-xl rounded-lg opacity-50"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 mb-6">
+            <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#22c235] via-[#5aee6c] to-[#b3f5cc] drop-shadow-2xl mb-2">Register</h2>
+            <p class="text-gray-300 text-sm">
+                Create an account to access the platform. All fields are required.
+            </p>
+        </div>
+        <div class="relative z-10 space-y-6">
+            <form method="POST" action="" class="space-y-4">
+                {% csrf_token %}
+                <!-- Display non-field errors -->
+                {% if form.non_field_errors %}
+                <div class="text-red-500 text-sm">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                <!-- Phone Number -->
+                <div>
+                    <label for="phone_number" class="block mb-2 text-sm font-medium text-transparent bg-clip-text bg-gradient-to-br from-[#22c235] via-[#5aee6c] to-[#b3f5cc] drop-shadow-2xl">Phone Number</label>
+                    <input type="tel" name="phone_number" id="phone_number"
+                        class="w-full p-2 text-white bg-black border border-gray-700 rounded-lg focus:ring focus:ring-green-500"
+                        placeholder="99999999" required>
+                    {% if form.phone_number.errors %}
+                    <p class="text-red-500 text-sm">
+                        {% for error in form.phone_number.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </p>
+                    {% endif %}
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label for="password" class="block mb-2 text-sm font-medium text-transparent bg-clip-text bg-gradient-to-br from-[#22c235] via-[#5aee6c] to-[#b3f5cc] drop-shadow-2xl">Password</label>
+                    <input type="password" name="password" id="password"
+                        class="w-full p-2 text-white bg-black border border-gray-700 rounded-lg focus:ring focus:ring-green-500"
+                        placeholder="••••••••" required>
+                    {% if form.password.errors %}
+                    <p class="text-red-500 text-sm">
+                        {% for error in form.password.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </p>
+                    {% endif %}
+                </div>
+
+                <!-- Confirm Password -->
+                <div>
+                    <label for="confirm_password" class="block mb-2 text-sm font-medium text-transparent bg-clip-text bg-gradient-to-br from-[#22c235] via-[#5aee6c] to-[#b3f5cc] drop-shadow-2xl">Confirm Password</label>
+                    <input type="password" name="confirm_password" id="confirm_password"
+                        class="w-full p-2 text-white bg-black border border-gray-700 rounded-lg focus:ring focus:ring-green-500"
+                        placeholder="••••••••" required>
+                    {% if form.confirm_password.errors %}
+                    <p class="text-red-500 text-sm">
+                        {% for error in form.confirm_password.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </p>
+                    {% endif %}
+                </div>
+
+                <!-- Referral Code -->
+                <div>
+                    <label for="referral_code" class="block mb-2 text-sm font-medium text-transparent bg-clip-text bg-gradient-to-br from-[#22c235] via-[#5aee6c] to-[#b3f5cc] drop-shadow-2xl">Referral Code</label>
+                    <input type="text" name="referral_code" id="referral_code" 
+                        value="{{ referral_code }}" 
+                        class="w-full p-2 text-white bg-black border border-gray-700 rounded-lg focus:ring focus:ring-green-500"
+                        readonly required>
+                    {% if form.referral_code.errors %}
+                    <p class="text-red-500 text-sm">
+                        {% for error in form.referral_code.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </p>
+                    {% endif %}
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit"
+                    class="text-lg transition duration-200 sm:w-fit w-full px-3.5 py-2 bg-gradient-to-br from-[#22c235] via-[#5aee6c] to-[#b3f5cc] hover:from-[#5aee6c] hover:via-[#b3f5cc] hover:to-[#22c235] transition-all duration-700 ease-in-out rounded-lg shadow-[0px_1px_2px_0px_rgba(16,_24,_40,_0.05)] justify-center items-center flex hover:shadow-lg hover:scale-105">
+                    <span class="px-1.5 text-gray-900 text-sm font-medium leading-6 whitespace-nowrap neon-text">
+                        Register
+                    </span>
+                </button>
+                <p class="text-sm text-center text-gray-300">
+                    Already have an account? <a href="/login" class="text-green-400 hover:underline">Login now</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock body %}

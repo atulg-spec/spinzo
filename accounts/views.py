@@ -1,6 +1,6 @@
 import json
 from .models import *
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseBadRequest
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import ValidationError
 from django.template.loader import render_to_string
@@ -22,15 +22,44 @@ def handlelogout(request):
     return redirect('/')
 
 def register(request):
-    if request.method == 'POST':
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your account has been created! You can now log in.')
-            return redirect('login')
+    if request.user.is_authenticated:
+        return redirect('/home')
+
+    if request.get_full_path() == '/register':
+        superuser = CustomUser.objects.filter(is_superuser=True).first()
+        return redirect(f'/register?referral_code={superuser.referral_code}')
+    referral_code = request.GET.get('referral_code', None)
+    referrer = None
+    
+    if referral_code:
+        referrer = get_object_or_404(CustomUser, referral_code=referral_code)
     else:
-        form = UserCreationForm()
-    return render(request, 'register.html', {'form': form})
+        messages.error(request, 'Invalid Referral URL !')
+        superuser = CustomUser.objects.filter(is_superuser=True).first()
+        return redirect(f'/register?referral_code={superuser.referral_code}')
+
+    if request.method == "POST":
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            if referrer:
+                user.user_invited_by = referrer
+            user.save()
+
+            if referrer:
+                referrer.team_members.add(user)
+
+            login(request, user)
+            return redirect('/home')  # Redirect to a success page
+    else:
+        form = CustomUserCreationForm()
+
+    return render(request, 'landing/register.html', {
+        'form': form,
+        'referral_code': referral_code,
+    })
+
+
 
 def handlelogin(request):
     if request.user.is_authenticated:
@@ -46,6 +75,6 @@ def handlelogin(request):
             return redirect('/home')
         else:
             messages.error(request, 'Invalid login credentials.')
-            return render(request, 'home/login.html', {'error': 'Invalid credentials'})
-    return render(request, 'home/login.html')
+            return render(request, 'landing/login.html', {'error': 'Invalid credentials'})
+    return render(request, 'landing/login.html')
 
